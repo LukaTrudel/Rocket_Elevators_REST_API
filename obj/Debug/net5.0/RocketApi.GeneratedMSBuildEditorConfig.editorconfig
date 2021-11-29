@@ -7,4 +7,4 @@ build_property.PublishSingleFile =
 build_property.IncludeAllContentForSelfExtract = 
 build_property._SupportedPlatformList = Android,iOS,Linux,macOS,Windows
 build_property.RootNamespace = RocketApi
-build_property.ProjectDir = /Users/lucastrudel/Desktop/Rocket_Rest_API/
+build_property.ProjectDir = /Users/lucastrudel/Desktop/Rocket_Elevators_REST_API/

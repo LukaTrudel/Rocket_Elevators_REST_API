@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/lucastrudel/Desktop/Rocket_Rest_API/RocketApi.csproj": {}
+    "/Users/lucastrudel/Desktop/Rocket_Elevators_REST_API/RocketApi.csproj": {}
   },
   "projects": {
-    "/Users/lucastrudel/Desktop/Rocket_Rest_API/RocketApi.csproj": {
+    "/Users/lucastrudel/Desktop/Rocket_Elevators_REST_API/RocketApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/lucastrudel/Desktop/Rocket_Rest_API/RocketApi.csproj",
+        "projectUniqueName": "/Users/lucastrudel/Desktop/Rocket_Elevators_REST_API/RocketApi.csproj",
         "projectName": "RocketApi",
-        "projectPath": "/Users/lucastrudel/Desktop/Rocket_Rest_API/RocketApi.csproj",
+        "projectPath": "/Users/lucastrudel/Desktop/Rocket_Elevators_REST_API/RocketApi.csproj",
         "packagesPath": "/Users/lucastrudel/.nuget/packages/",
-        "outputPath": "/Users/lucastrudel/Desktop/Rocket_Rest_API/obj/",
+        "outputPath": "/Users/lucastrudel/Desktop/Rocket_Elevators_REST_API/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/lucastrudel/.nuget/NuGet/NuGet.Config"

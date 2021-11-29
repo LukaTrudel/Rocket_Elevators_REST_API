@@ -16,5 +16,9 @@ namespace RocketApi.Models
         public DbSet<Column> columns { get; set; }
         public DbSet<Elevator> elevators { get; set; }
 
+        public DbSet<Interventions> interventions { get; set; }
+
+        
+
     }
 }
