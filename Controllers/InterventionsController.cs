@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
 
+
 namespace RocketApi.Controllers
 {
     [Route("api/[controller]")]
@@ -49,37 +50,45 @@ namespace RocketApi.Controllers
 
             return inter.status;
         }
-        // PUT Request to change specified intervention status to In Progess or Completed
-        [HttpPut("{id}/{status}")]
-        public async Task<ActionResult<Interventions>> StartIntervention(long id, string status)
+        [HttpGet("{id}/inProgress")]
+        public async Task<ActionResult<Interventions>> setInProgress(long id)
         {
             var intervention = await _context.interventions.FindAsync(id);
-            intervention.status = status;
+            if (intervention == null) return NotFound();
 
-            if(status == "InProgress")
-            {
-                intervention.start_of_intervention = DateTime.Now;
-                await _context.SaveChangesAsync();
-                return intervention;
-            }
-            else if(status == "Completed")
-            {
-                intervention.end_of_intervention = DateTime.Now;
-                await _context.SaveChangesAsync();
-                return intervention;
-            }
+            intervention.start_of_intervention = DateTime.Now;
+            intervention.status = "InProgress";
 
-            return Ok("Invalid Endpoint!");
+            if (intervention.status != "Completed")
+            {
+                _context.interventions.Update(intervention);
+                _context.SaveChanges();
+            }
+            
+             
+
+
+            return intervention;
         }
-        [HttpPost("create")]
-        public async Task<ActionResult<Interventions>> PostIntervention(Interventions intervention)
+
+        [HttpGet("{id}/completed")]
+        public async Task<ActionResult<Interventions>> setToCompleted(long id)
         {
-            intervention.created_at = DateTime.Now;
-            intervention.updated_at = DateTime.Now;
-            _context.interventions.Add(intervention);
-            await _context.SaveChangesAsync();
+            var intervention = await _context.interventions.FindAsync(id);
+            if (intervention == null) return NotFound();
 
-            return CreatedAtAction("GetInterventions", new { id = intervention.Id }, intervention);
+            intervention.end_of_intervention = DateTime.Now;
+            intervention.status = "Completed";
+
+            if (intervention.status == "InProgress")
+            {
+                _context.interventions.Update(intervention);
+                _context.SaveChanges();
+            }
+
+            return intervention;
         }
+
+        
     }
 }
