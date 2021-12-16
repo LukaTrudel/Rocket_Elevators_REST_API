@@ -74,6 +74,17 @@ For the 6th week, we have created a rest API with 9 endpoints and a graphql API.
     > https://rocketelevatorsapi.azurewebsites.net/api/buildings/1
 
 
+CONSOLIDATION END POINTS
+
+
+- Get Pending Interventions
+    > https://rocketelevatorsapi.azurewebsites.net/api/interventions
+- Put To inProgress
+    > https://rocketelevatorsapi.azurewebsites.net/api/interventions/1/inprogress
+- Put to Completed
+    > https://rocketelevatorsapi.azurewebsites.net/api/interventions/1/completed
+
+
 ## Contributors
 
 - **[Ted Lemy](https://github.com/lemyted)**

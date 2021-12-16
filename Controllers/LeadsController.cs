@@ -59,5 +59,64 @@ namespace RocketApi.Controllers
             return lead;
         }
         
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutLead(long id, Lead lead)
+        {
+            if (id != lead.Id)
+            {
+                return BadRequest();
+            }
+
+            _context.Entry(lead).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!LeadExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<Lead>> PostLead(Lead lead)
+        {
+            _context.leads.Add(lead);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetLead", new { id = lead.Id }, lead);
+        }
+
+        
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<Lead>> DeleteLead(long id)
+        {
+            var lead = await _context.leads.FindAsync(id);
+            if (lead == null)
+            {
+                return NotFound();
+            }
+
+            _context.leads.Remove(lead);
+            await _context.SaveChangesAsync();
+
+            return lead;
+        }
+
+        private bool LeadExists(long id)
+        {
+            return _context.leads.Any(e => e.Id == id);
+        }
     }
+    
 }
