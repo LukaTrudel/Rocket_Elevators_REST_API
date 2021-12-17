@@ -35,21 +35,21 @@ namespace RocketApi.Controllers
 
             return customer;
         }
-        // [HttpGet("FullInfo/{email}")]
-        // public async Task<ActionResult<Customer>> GetCustomer(string email)
-        // {
+        [HttpGet("FullInfo/{email}")]
+        public async Task<ActionResult<Customer>> GetCustomer(string email)
+        {
             
-        //     var customer = await _context.customers.Include("Buildings.Batteries.Columns.Elevators")
-        //                                             .Where(c => c.Email == email)
-        //                                             .FirstOrDefaultAsync();                     
+            var customer = await _context.customers.Include("Buildings.Batteries.Columns.Elevators")
+                                                    .Where(c => c.Email == email)
+                                                    .FirstOrDefaultAsync();                     
 
-        //     if (customer == null)
-        //     {
-        //         return NotFound();
-        //     }
+            if (customer == null)
+            {
+                return NotFound();
+            }
 
-        //     return customer;
-        // } 
+            return customer;
+        } 
 
         [HttpGet("{email}/customer")]
         public object GetBuildingsByCustomerEmail(string email)
