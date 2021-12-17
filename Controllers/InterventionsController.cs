@@ -21,8 +21,13 @@ namespace RocketApi.Controllers
         {
             _context = context;
         }
-
         [HttpGet]
+        public async Task<ActionResult<IEnumerable<Interventions>>> Getinterventions()
+        {
+            return await _context.interventions.ToListAsync();
+        }
+
+        [HttpGet("{email}/status")]
         public async Task<ActionResult<IEnumerable<Interventions>>> GetInterventions()
         {
             var _intervention = await _context.interventions.ToListAsync();
