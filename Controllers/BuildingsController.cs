@@ -38,7 +38,8 @@ namespace RocketApi.Controllers
         [HttpGet("{email}/customer")]
         public object GetBuildingsByCustomerEmail(string email)
         {
-            return _context.buildings.Where(b => b.emailAdministrator == email);
+            var customer =_context.customers.Where(c => c.Email == email).FirstOrDefault();
+            return _context.buildings.Where(b => b.CustomerId == customer.Id);
         }     
 
         
