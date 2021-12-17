@@ -40,6 +40,20 @@ namespace RocketApi.Controllers
 
             return column;
         }
+        [HttpGet("find-columns/{id}")]
+        public ActionResult<List<Column>> GetColumnsFromBattery(long id)
+        {
+            List<Column> columns = _context.columns.ToList();
+            List<Column> batteryColumns = new List<Column>();
+            foreach (Column column in columns)
+            {
+                if (column.BatteryId == id)
+                {
+                    batteryColumns.Add(column);
+                }
+            }
+            return batteryColumns;
+        }
         
 
         [HttpGet("{id}/status")]

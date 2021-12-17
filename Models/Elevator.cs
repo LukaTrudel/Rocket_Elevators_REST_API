@@ -8,5 +8,8 @@ namespace RocketApi.Models
         public long Id { get; set; }
         public string Status { get; set; }
         public long ColumnId { get; set; }
+
+        [System.Text.Json.Serialization.JsonIgnore]
+        public  Column Column { get; }
     }
 } 

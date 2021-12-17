@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using RocketApi.Models;
 using Microsoft.EntityFrameworkCore;
-
+using System.Linq;
 
 namespace RocketApi.Controllers
 {
@@ -35,6 +35,27 @@ namespace RocketApi.Controllers
 
             return customer;
         }
+        // [HttpGet("FullInfo/{email}")]
+        // public async Task<ActionResult<Customer>> GetCustomer(string email)
+        // {
+            
+        //     var customer = await _context.customers.Include("Buildings.Batteries.Columns.Elevators")
+        //                                             .Where(c => c.Email == email)
+        //                                             .FirstOrDefaultAsync();                     
+
+        //     if (customer == null)
+        //     {
+        //         return NotFound();
+        //     }
+
+        //     return customer;
+        // } 
+
+        [HttpGet("{email}/customer")]
+        public object GetBuildingsByCustomerEmail(string email)
+        {
+            return _context.customers.Where(c => c.Email == email);
+        } 
 
         [HttpGet("verify/{email}")]
         public async Task<ActionResult<Customer>> GetInfoCustomer(string email)

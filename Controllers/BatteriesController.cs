@@ -57,6 +57,20 @@ namespace RocketApi.Controllers
 
             return battery.Status;
         }
+        [HttpGet("find-batteries/{id}")]
+        public ActionResult<List<Battery>> GetBatteriesFromBuilding(long id)
+        {
+            List<Battery> batteries = _context.batteries.ToList();
+            List<Battery> buildingBatteries = new List<Battery>();
+            foreach (Battery battery in batteries)
+            {
+                if (battery.BuildingId == id)
+                {
+                    buildingBatteries.Add(battery);
+                }
+            }
+            return buildingBatteries;
+        }
 
         [HttpGet("update/{id}/{status}")]
         public async Task<dynamic> test(string status, long id)

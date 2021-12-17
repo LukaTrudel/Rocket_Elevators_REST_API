@@ -9,6 +9,11 @@ namespace RocketApi.Models
         public long BatteryId { get; set; }
         public string Status { get; set; }
 
+        [System.Text.Json.Serialization.JsonIgnore]
+
+        public  Battery Battery { get; set;}
+        public virtual ICollection<Elevator> Elevators { get; }
+
         public Boolean getElevatorList(List<Elevator> filteredElevators) 
         {
             var currentElevators = new List<Elevator>();

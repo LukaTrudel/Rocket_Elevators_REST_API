@@ -9,6 +9,13 @@ namespace RocketApi.Models
         public long BuildingId {get; set; }
         public string Status { get; set; }
 
+        
+
+        [System.Text.Json.Serialization.JsonIgnore]
+
+        public  Building Building { get; set;}
+        public virtual ICollection<Column> Columns { get; set;}
+
 
         public Boolean getColumnList(List<Column> filteredColumns, List<Elevator> filteredElevators) 
         {

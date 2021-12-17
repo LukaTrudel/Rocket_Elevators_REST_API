@@ -58,6 +58,20 @@ namespace RocketApi.Controllers
                   .Select(elevator => new { elevator.Id, elevator.Status });
 
         }
+        [HttpGet("find-elevators/{id}")]
+        public ActionResult<List<Elevator>> GetElevatorsFromColumn(long id)
+        {
+            List<Elevator> elevators = _context.elevators.ToList();
+            List<Elevator> columnElevators = new List<Elevator>();
+            foreach (Elevator elevator in elevators)
+            {
+                if (elevator.ColumnId == id)
+                {
+                    columnElevators.Add(elevator);
+                }
+            }
+            return columnElevators;
+        }
 
         [HttpGet("update/{id}/{status}")]
         public async Task<dynamic> test(string status, long id)

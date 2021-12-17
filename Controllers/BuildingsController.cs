@@ -35,6 +35,11 @@ namespace RocketApi.Controllers
         {
             return await _context.buildings.ToListAsync();
         }
+        [HttpGet("{email}/customer")]
+        public object GetBuildingsByCustomerEmail(string email)
+        {
+            return _context.buildings.Where(b => b.emailAdministrator == email);
+        }     
 
         
 
@@ -73,5 +78,7 @@ namespace RocketApi.Controllers
 
             return building;
         }
-    }  
+        
+    }
+    
 }
