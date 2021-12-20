@@ -6,7 +6,7 @@ namespace RocketApi.Models
     public class Interventions
     {
        public long Id { get; set; }
-       public int? author { get; set; }
+       public int author { get; set; }
        public int? customer_id { get; set; }
        public int? building_id { get; set; }
        public int? battery_id { get; set; }

@@ -93,6 +93,48 @@ namespace RocketApi.Controllers
 
             return intervention;
         }
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Interventions>> GetIntervention(long id)
+        {
+            var intervention = await _context.interventions.FindAsync(id);
+
+            if (intervention == null)
+            {
+                return NotFound();
+            }
+
+            return intervention;
+        }
+        [HttpPost]
+        public async Task<ActionResult<Interventions>> PostIntervention(Interventions intervention)
+        {
+
+            intervention.created_at = DateTime.Now;
+            intervention.updated_at = DateTime.Now;
+
+            _context.interventions.Add(intervention);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetIntervention", new { id = intervention.Id }, intervention);
+        }
+        // [HttpPost]
+        // public async Task<ActionResult<Interventions>> PostIntervention(Interventions newIntervention)
+        // {
+        //     newIntervention.created_at= DateTime.Now;
+        //     newIntervention.status = "InProgress";
+        //     newIntervention.result = "Incomplete";
+        //     newIntervention.employee_id = null;
+
+        //     _context.interventions.Add(newIntervention);
+        //     await _context.SaveChangesAsync();
+
+        //     return NoContent();
+        // }
+
+        // private bool InterventionExists(long id)
+        // {
+        //     return _context.interventions.Any(e => e.Id == id);
+        // }
         
         
     }

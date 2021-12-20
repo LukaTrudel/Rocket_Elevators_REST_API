@@ -11,6 +11,8 @@ namespace RocketApi.Models
 
         
 
+        
+
         [System.Text.Json.Serialization.JsonIgnore]
 
         public  Building Building { get; set;}

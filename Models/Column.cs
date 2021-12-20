@@ -9,6 +9,8 @@ namespace RocketApi.Models
         public long BatteryId { get; set; }
         public string Status { get; set; }
 
+        
+
         [System.Text.Json.Serialization.JsonIgnore]
 
         public  Battery Battery { get; set;}

@@ -9,7 +9,11 @@ namespace RocketApi.Models
         public long CustomerId { get; set; }
         public long AddressId { get; set; }
 
+        public string fullNameAdministrator { get; set; }
+
         public string emailAdministrator { get; set; }
+
+        
 
         [System.Text.Json.Serialization.JsonIgnore]
 
