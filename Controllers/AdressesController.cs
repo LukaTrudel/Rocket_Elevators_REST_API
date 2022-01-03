@@ -43,9 +43,12 @@ namespace RocketApi.Controllers
 
 
         [HttpGet("City")]
-        public object GetCitys()
+        public async Task<List<int>> GetCitys() 
         {
-            return _context.addresses.Where(addresses => addresses.entity == "Building"); 
+            var arrayAPI = new List<int>();
+            var numOfAddresses = await _context.addresses.Select(c => c.city).Distinct().ToListAsync();
+            arrayAPI.Add(numOfAddresses.Count);
+            return arrayAPI;
         }
 
 
