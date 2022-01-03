@@ -17,6 +17,7 @@ namespace RocketApi.Models
         public DbSet<Elevator> elevators { get; set; }
 
         public DbSet<Interventions> interventions { get; set; }
+        public virtual DbSet<Quotes> quotes { get; set; }
 
         
 
