@@ -20,15 +20,14 @@ namespace RocketApi.Controllers
             _context = context;
         }
 
-        // GET: api/Addresses
+       
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Address>>> Getaddresses()
         {
             return await _context.addresses.ToListAsync();
         }
 
-//----------------------------------- Retrieving all information from a specific Address -----------------------------------\\
-        // GET: api/Addresses/id
+
         [HttpGet("{id}")]
         public async Task<ActionResult<Address>> GetAddress(long id)
         {
@@ -42,17 +41,14 @@ namespace RocketApi.Controllers
             return address;
         }
 
-//----------------------------------- Retrieving all building addresses -----------------------------------\\
-        // GET: api/Addresses/City
+
         [HttpGet("City")]
         public object GetCitys()
         {
             return _context.addresses.Where(addresses => addresses.entity == "Building"); 
         }
 
-//----------------------------------- Update information from a specific Address -----------------------------------\\
 
-        // PUT: api/Addresses
         [HttpPut]
         public async Task<ActionResult<Address>> PutAddress(Address address)
         {
