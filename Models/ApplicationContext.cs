@@ -19,6 +19,8 @@ namespace RocketApi.Models
         public DbSet<Interventions> interventions { get; set; }
         public virtual DbSet<Quotes> quotes { get; set; }
 
+        public DbSet<Address> addresses { get; set; }
+
         
 
     }

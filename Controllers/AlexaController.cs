@@ -6,7 +6,7 @@ using System.Linq;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
-namespace Rocket_Elevators_Rest_API.Controllers
+namespace RocketApi.Controllers
 {
     [Route("api/[controller]")]
     public class AlexaController : ControllerBase

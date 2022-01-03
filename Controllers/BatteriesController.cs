@@ -23,7 +23,7 @@ namespace RocketApi.Controllers
             _context = context;
         }
 
-        [HttpGet("all")]
+        [HttpGet]
         public async Task<ActionResult<IEnumerable<Battery>>> Getbatteries()
         {
             return await _context.batteries

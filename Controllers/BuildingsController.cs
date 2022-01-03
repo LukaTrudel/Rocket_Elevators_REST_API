@@ -30,7 +30,7 @@ namespace RocketApi.Controllers
             return null;
         }
 
-        [HttpGet("all")]
+        [HttpGet]
         public async Task<ActionResult<IEnumerable<Building>>> getAllBuildings()
         {
             return await _context.buildings.ToListAsync();
@@ -44,7 +44,7 @@ namespace RocketApi.Controllers
 
         
 
-        [HttpGet]
+        [HttpGet("filter")]
         public List<Building> GetBuildings()
         {
             var buildings = _context.buildings.ToList();

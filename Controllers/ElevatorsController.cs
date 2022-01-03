@@ -18,10 +18,19 @@ namespace RocketApi.Controllers
             _context = context;
         }
 
-        [HttpGet("all")]
+        [HttpGet]
         public async Task<ActionResult<IEnumerable<Elevator>>> getElevators()
         {
             return await _context.elevators.ToListAsync();
+        }
+
+        [HttpGet("NotActive")]
+        public object GetElevators()
+        {
+            return _context.elevators
+                        .Where(elevator => elevator.Status != "Active")
+                        .Select(elevator => new {elevator.Id, elevator.SerialNumber, elevator.Status});
+            
         }
 
         [HttpGet("{id}")]

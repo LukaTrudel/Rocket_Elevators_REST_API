@@ -9,6 +9,8 @@ namespace RocketApi.Models
         public string Status { get; set; }
         public long ColumnId { get; set; }
 
+        public string SerialNumber {get; set; }
+
         [System.Text.Json.Serialization.JsonIgnore]
         public  Column Column { get; }
     }

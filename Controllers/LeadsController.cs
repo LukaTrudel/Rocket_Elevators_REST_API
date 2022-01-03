@@ -18,14 +18,14 @@ namespace RocketApi.Controllers
         {
             _context = context;
         }
-        [HttpGet("all")]
+        [HttpGet]
         public async Task<ActionResult<IEnumerable<Lead>>> getLeads()
         {
             return await _context.leads.ToListAsync();
         }
 
 
-        [HttpGet]
+        [HttpGet("filter")]
         public List<Lead> GetLeads()
         {
             var leads = _context.leads.ToList();
