@@ -40,16 +40,25 @@ namespace RocketApi.Controllers
 
             return address;
         }
-
-
         [HttpGet("City")]
-        public async Task<List<int>> GetCitys() 
+        public async Task<List<string>> GetCitys(string city) 
         {
-            var arrayAPI = new List<int>();
-            var numOfAddresses = await _context.addresses.Select(c => c.city).Distinct().ToListAsync();
-            arrayAPI.Add(numOfAddresses.Count);
-            return arrayAPI;
+            
+            var numCity = await _context.addresses.Select(c => c.city).Distinct().ToListAsync();
+            
+            return numCity;
         }
+
+
+
+        // [HttpGet("City")]
+        // public async Task<List<int>> GetCitys() 
+        // {
+        //     var arrayAPI = new List<int>();
+        //     var numOfAddresses = await _context.addresses.Select(c => c.city).Distinct().ToListAsync();
+        //     arrayAPI.Add(numOfAddresses.Count);
+        //     return arrayAPI;
+        // }
 
 
         [HttpPut]
