@@ -20,6 +20,9 @@ namespace RocketApi.Models
         public virtual DbSet<Quotes> quotes { get; set; }
 
         public DbSet<Address> addresses { get; set; }
+        public virtual DbSet<Employee> employees { get; set; }
+
+        // public virtual DbSet<User> Users { get; set; }
 
         
 
